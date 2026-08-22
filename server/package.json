@@ -1,0 +1,25 @@
+{
+  "name": "sugarcane-data-system",
+  "version": "1.0.0",
+  "description": "甘蔗田间数据收集系统 - 后端服务（使用Node.js内置http模块+SQLite）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "sugarcane",
+    "agriculture",
+    "data-collection"
+  ],
+  "author": "广西科技师范学院 - 谢永盛团队",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "xlsx": "^0.18.5"
+  }
+}
