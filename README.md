@@ -1,2 +1,167 @@
-# sugarcane-data-system
- Field Data Recording and Collection in Sugarcane Fields蔗田田间数据记录与收集
+# 甘蔗田间数据收集系统
+
+> 广西科技师范学院 × 来宾市农业科学院 联合开发
+
+## 项目简介
+
+本系统是专为甘蔗田间研究数据采集设计的数字化管理平台，旨在解决传统纸质表格记录方式的痛点：
+- 数据无法实时验证（如株高逐月递减等异常数据无法及时发现）
+- 后期数据录入工作量大，且存在录入错误风险
+- 数据查询、统计、导出不便
+
+系统包含**微信小程序端**（田间数据采集）和**PC端后台**（数据管理与导出），采用轻量级技术栈，开箱即用。
+
+## 技术栈
+
+| 层级 | 技术 | 说明 |
+|------|------|------|
+| 后端 | Node.js + Express | RESTful API服务 |
+| 数据库 | SQLite (better-sqlite3) | 轻量级文件数据库，无需额外安装 |
+| PC端 | 原生HTML/CSS/JavaScript | 无需构建工具，直接浏览器访问 |
+| 移动端 | 微信小程序原生开发 | 微信开发者工具导入即可 |
+| 数据导出 | ExcelJS | 生成标准Excel文件 |
+| 认证 | JWT + bcryptjs | Token认证，密码加密存储 |
+
+## 目录结构
+
+```
+sugarcane-data-system/
+├── server/                    # 后端服务
+│   ├── server.js              # 服务入口
+│   ├── database.js            # 数据库初始化
+│   ├── package.json           # 依赖配置
+│   ├── routes/                # API路由
+│   │   ├── auth.js            # 认证接口
+│   │   ├── plots.js           # 试验田管理
+│   │   ├── plants.js          # 植株管理
+│   │   ├── growth.js          # 生长记录（含数据验证）
+│   │   ├── diseases.js        # 病害记录
+│   │   ├── export.js          # 数据导出
+│   │   ├── dashboard.js       # 仪表盘统计
+│   │   ├── users.js           # 用户管理
+│   │   └── upload.js          # 文件上传
+│   ├── middleware/
+│   │   └── auth.js            # JWT认证中间件
+│   ├── uploads/               # 上传图片存储目录
+│   └── exports/               # 导出Excel存储目录
+├── admin/                     # PC端后台
+│   ├── index.html             # 主页面
+│   ├── css/style.css          # 样式文件
+│   └── js/                    # 页面逻辑
+│       ├── app.js             # 通用工具
+│       ├── auth.js            # 登录
+│       ├── dashboard.js       # 数据概览
+│       ├── plots.js           # 试验田管理
+│       ├── plants.js          # 植株管理
+│       ├── growth.js          # 生长记录
+│       ├── diseases.js        # 病害记录
+│       ├── export.js          # 数据导出
+│       └── users.js           # 用户管理
+├── miniprogram/               # 微信小程序
+│   ├── app.js                 # 小程序入口
+│   ├── app.json               # 全局配置
+│   ├── app.wxss               # 全局样式
+│   ├── project.config.json    # 项目配置
+│   ├── utils/
+│   │   └── api.js             # API请求封装
+│   └── pages/                 # 页面
+│       ├── index/             # 首页
+│       ├── login/             # 登录
+│       ├── plots/             # 试验田列表
+│       ├── plot-detail/       # 试验田详情
+│       ├── plants/            # 植株列表
+│       ├── plant-detail/      # 植株详情
+│       ├── growth-record/     # 生长数据录入
+│       ├── disease-record/    # 病害记录
+│       ├── my-records/        # 我的记录
+│       ├── export/            # 数据导出
+│       └── profile/           # 个人中心
+├── deploy/                    # 部署脚本
+│   ├── 安装依赖.bat           # Windows一键安装依赖
+│   ├── 启动服务.bat           # Windows启动服务
+│   └── 启动服务.sh            # Linux/Mac启动服务
+├── 部署教程.md                 # 详细部署教程（面向零基础）
+└── README.md                   # 本文件
+```
+
+## 核心功能
+
+### 1. 生长数据采集与验证
+- 株高、茎径、叶片数、分蘖数、节间长度等指标录入
+- **实时数据验证**：自动检测株高递减、茎径骤减等异常数据
+- 支持现场拍照、天气记录、温湿度记录
+
+### 2. 病害记录
+- 支持13种常见甘蔗病害类型
+- 记录严重程度、发病面积、症状描述、处理措施
+- 支持病害照片上传
+
+### 3. 试验田与植株管理
+- 试验田档案管理（位置、面积、土壤、品种等）
+- 植株档案管理，支持**批量创建**
+- 植株生长历史追踪
+
+### 4. 数据导出
+- 按时间周期导出生长记录Excel
+- 按时间周期导出病害记录Excel
+- 一键导出综合报表（含多个工作表）
+- 导出的Excel格式规范，可直接用于论文和汇报
+
+### 5. 用户与权限
+- 管理员/研究员双角色
+- 支持用户创建、密码重置、启用/禁用
+- JWT Token认证，密码bcrypt加密
+
+## 快速开始
+
+### Windows用户（推荐）
+
+1. 安装 Node.js（https://nodejs.org/zh-cn/，下载LTS版）
+2. 进入 `deploy` 目录，双击「安装依赖.bat」
+3. 双击「启动服务.bat」
+4. 浏览器访问 http://localhost:3000
+5. 默认账号：admin / admin123
+
+### Linux/Mac用户
+
+```bash
+cd server
+npm install
+node server.js
+```
+
+### 微信小程序
+
+1. 安装微信开发者工具
+2. 导入 `miniprogram` 目录
+3. 修改 `app.js` 中的后端服务地址
+4. 勾选「不校验合法域名」
+5. 预览即可使用
+
+## 默认账号
+
+| 角色 | 用户名 | 密码 | 说明 |
+|------|--------|------|------|
+| 管理员 | admin | admin123 | 拥有所有权限，首次登录请修改密码 |
+
+## 数据安全说明
+
+- 所有用户密码使用 bcryptjs 加密存储，不可逆
+- API接口使用JWT Token认证，无Token无法访问
+- 代码中无任何远程控制、数据窃取、后门等恶意代码
+- 数据库文件为本地SQLite，数据完全可控
+- 建议定期备份 `server/sugarcane.db` 文件
+
+## 开发团队
+
+- **开发单位**：广西科技师范学院人工智能学院
+- **合作单位**：来宾市农业科学院
+- **项目负责人**：谢永盛（副教授/副研究员，人工智能学院副院长）
+
+## 许可证
+
+MIT License
+
+## 版本历史
+
+- v1.0.0 (2026-08-21)：首个正式版本发布

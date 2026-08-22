@@ -1,0 +1,1 @@
+在”D:\sugarcane-data-system\server“目录下使用 PowerShell 运行”node server.js“，再用浏览器打开”http://localhost:3000/“
