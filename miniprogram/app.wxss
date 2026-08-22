@@ -1,0 +1,347 @@
+/* app.wxss */
+/* 甘蔗田间数据收集系统 - 全局样式 */
+/* 主题色：绿色（参考OpenPheno风格） */
+
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 主题色变量（CSS变量在小程序中部分支持，这里用固定值） */
+.primary-color { color: #2E7D32; }
+.primary-bg { background-color: #2E7D32; }
+.primary-light-bg { background-color: #E8F5E9; }
+
+/* ==================== 通用容器 ==================== */
+.container {
+  padding: 24rpx;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.page-content {
+  padding-bottom: 40rpx;
+}
+
+/* ==================== 卡片样式 ==================== */
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title .icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+/* ==================== 按钮样式 ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 32rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  border: none;
+  line-height: 1.4;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+  color: #fff;
+}
+
+.btn-primary:active {
+  opacity: 0.8;
+}
+
+.btn-default {
+  background: #f5f5f5;
+  color: #666;
+  border: 1rpx solid #e0e0e0;
+}
+
+.btn-danger {
+  background: #C62828;
+  color: #fff;
+}
+
+.btn-warning {
+  background: #F57C00;
+  color: #fff;
+}
+
+.btn-block {
+  width: 100%;
+  padding: 24rpx;
+  font-size: 32rpx;
+}
+
+.btn-sm {
+  padding: 8rpx 20rpx;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+}
+
+/* ==================== 表单样式 ==================== */
+.form-group {
+  margin-bottom: 28rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #555;
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+.form-label .required {
+  color: #C62828;
+  margin-left: 4rpx;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  background: #f8f9fa;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #4CAF50;
+  background: #fff;
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: 160rpx;
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.form-select {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  background: #f8f9fa;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ==================== 列表样式 ==================== */
+.list-item {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.list-item-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.list-item-desc {
+  font-size: 26rpx;
+  color: #888;
+}
+
+.list-item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* ==================== 状态标签 ==================== */
+.status-tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+.status-normal { background: #E8F5E9; color: #2E7D32; }
+.status-diseased { background: #FFF3E0; color: #E65100; }
+.status-dead { background: #FFEBEE; color: #C62828; }
+.status-mild { background: #E8F5E9; color: #2E7D32; }
+.status-moderate { background: #FFF3E0; color: #E65100; }
+.status-severe { background: #FFEBEE; color: #C62828; }
+
+/* ==================== 空状态 ==================== */
+.empty-state {
+  text-align: center;
+  padding: 120rpx 40rpx;
+  color: #999;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* ==================== 分割线 ==================== */
+.divider {
+  height: 1rpx;
+  background: #eee;
+  margin: 24rpx 0;
+}
+
+/* ==================== 浮动按钮 ==================== */
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 120rpx;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  box-shadow: 0 8rpx 24rpx rgba(46, 125, 50, 0.4);
+  z-index: 100;
+}
+
+/* ==================== 数据验证提示 ==================== */
+.validation-alert {
+  padding: 20rpx 24rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+}
+
+.validation-error {
+  background: #FFEBEE;
+  color: #C62828;
+  border-left: 6rpx solid #C62828;
+}
+
+.validation-warning {
+  background: #FFF3E0;
+  color: #E65100;
+  border-left: 6rpx solid #E65100;
+}
+
+/* ==================== 统计卡片 ==================== */
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 45%;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.stat-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+}
+
+.stat-icon-green { background: #E8F5E9; }
+.stat-icon-blue { background: #E3F2FD; }
+.stat-icon-orange { background: #FFF3E0; }
+.stat-icon-red { background: #FFEBEE; }
+
+.stat-value {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* ==================== 功能入口网格 ==================== */
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-bottom: 24rpx;
+}
+
+.menu-item {
+  flex: 1;
+  min-width: 30%;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 32rpx 16rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.menu-item:active {
+  background: #f5f5f5;
+}
+
+.menu-icon {
+  font-size: 56rpx;
+  margin-bottom: 12rpx;
+}
+
+.menu-text {
+  font-size: 26rpx;
+  color: #555;
+}
